@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mamá - Feliz Cumpleaños</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red-deep: #c41e3a;
+            --red-medium: #e63946;
+            --rose-light: #ffc2d1;
+            --rose-soft: #ffe5ec;
+            --cream: #fff8f5;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--rose-soft) 0%, var(--cream) 40%, var(--rose-light) 100%);
+            overflow-x: hidden;
+        }
+
+        /* Sección contenedora */
+        .section {
+            min-height: 100vh;
+            display: none;
+            padding: 3rem 2rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .section.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Corazones flotantes */
+        .heart-float {
+            position: fixed;
+            opacity: 0.15;
+            animation: float linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.15;
+            }
+            90% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 3rem 2rem;
+            box-shadow: 0 30px 80px rgba(196, 30, 58, 0.2);
+            max-width: 900px;
+            width: 100%;
+            border: 2px solid rgba(255, 194, 209, 0.4);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Página 1 - Entrada */
+        .page1-content {
+            text-align: center;
+        }
+
+        .page1-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 400;
+            font-style: italic;
+            background: linear-gradient(135deg, var(--red-deep), var(--red-medium));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+        }
+
+        .date {
+            font-family: 'Lora', serif;
+            font-size: 1.1rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+        }
+
+        .message {
+            font-family: 'Lora', serif;
+            font-size: 1.4rem;
+            color: #444;
+            line-height: 2;
+            margin-bottom: 3rem;
+        }
+
+        .message em {
+            color: var(--red-medium);
+            font-style: italic;
+        }
+
+        /* Página 2 y 3 - Fotos */
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            font-style: italic;
+            text-align: center;
+            background: linear-gradient(135deg, var(--red-deep), var(--red-medium));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 3rem;
+        }
+
+        .photos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .photo-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border: 5px solid white;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: scale(1.03);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .decorative-line {
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--red-medium), transparent);
+            margin: 2.5rem auto;
+        }
+
+        .text-content {
+            font-family: 'Lora', serif;
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #444;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .text-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .text-content em {
+            color: var(--red-medium);
+            font-weight: 600;
+        }
+
+        .message-box {
+            background: linear-gradient(135deg, rgba(255, 194, 209, 0.3), rgba(255, 229, 236, 0.3));
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 2px solid rgba(255, 194, 209, 0.5);
+        }
+
+        .message-box p {
+            font-family: 'Lora', serif;
+            font-size: 1.35rem;
+            line-height: 2;
+            color: #444;
+            text-align: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .message-box em {
+            color: var(--red-medium);
+            font-weight: 600;
+        }
+
+        /* Página 4 - Carta final */
+        .header-photo {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 2.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid var(--red-medium);
+            box-shadow: 0 15px 40px rgba(196, 30, 58, 0.3);
+        }
+
+        .header-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid var(--rose-light);
+        }
+
+        .letter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--red-deep), var(--red-medium));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .letter-body {
+            font-family: 'Lora', serif;
+            font-size: 1.25rem;
+            line-height: 2.2;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .letter-body p {
+            margin-bottom: 1.8rem;
+            text-align: justify;
+        }
+
+        .letter-body em {
+            color: var(--red-medium);
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--rose-soft), var(--cream));
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            border-left: 6px solid var(--red-medium);
+        }
+
+        .highlight-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--red-deep);
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 3.5rem;
+        }
+
+        .signature p {
+            font-family: 'Lora', serif;
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .signature .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--red-deep), var(--red-medium));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        .decorative-heart {
+            text-align: center;
+            font-size: 4rem;
+            color: var(--red-medium);
+            margin: 3rem 0;
+            animation: heartPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes heartPulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* Botones */
+        .btn-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            font-family: 'Raleway', sans-serif;
+            padding: 1.2rem 3.5rem;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, var(--red-deep), var(--red-medium));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 40px rgba(196, 30, 58, 0.3);
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(196, 30, 58, 0.4);
+        }
+
+        /* Confeti */
+        .confetti {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            position: absolute;
+            animation: confettiFall 4s linear infinite;
+            z-index: 100;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .heart-icon {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            font-size: 3rem;
+            color: var(--red-medium);
+            animation: heartbeat 1.5s ease-in-out infinite;
+            opacity: 0.7;
+            z-index: 100;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .photos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page1-content h1 {
+                font-size: 3rem;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Corazones flotantes -->
+    <div class="heart-float" style="left: 10%; font-size: 2rem; animation-duration: 20s; animation-delay: 0s;">❤</div>
+    <div class="heart-float" style="left: 30%; font-size: 1.5rem; animation-duration: 25s; animation-delay: 3s;">❤</div>
+    <div class="heart-float" style="left: 50%; font-size: 2.5rem; animation-duration: 22s; animation-delay: 6s;">❤</div>
+    <div class="heart-float" style="left: 70%; font-size: 1.8rem; animation-duration: 24s; animation-delay: 2s;">❤</div>
+    <div class="heart-float" style="left: 85%; font-size: 2rem; animation-duration: 23s; animation-delay: 5s;">❤</div>
+
+    <div class="heart-icon">❤</div>
+
+    <!-- PÁGINA 1 - Entrada -->
+    <div class="section active" id="page1">
+        <div class="container">
+            <div class="page1-content">
+                <h1>Para Mamá</h1>
+                <p class="date">12 de marzo de 2026</p>
+                <p class="message">
+                    Hoy es tu día especial...<br>
+                    Y tengo algo importante que decirte.<br>
+                    <br>
+                    <em>Algo que llevo en el corazón desde hace mucho tiempo.</em>
+                </p>
+                <div class="btn-container">
+                    <button class="btn" onclick="goToPage(2)">Continuar ❤</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 2 - Fotos de niño -->
+    <div class="section" id="page2">
+        <div class="container">
+            <h2 class="page-title">Recuerdo cuando eras pequeño...</h2>
+
+            <div class="photos-grid">
+                <div class="photo-card">
+                    <img src="images/FB_IMG_1773284955171.jpg" alt="Cuando eras niño">
+                </div>
+                <div class="photo-card">
+                    <img src="images/FB_IMG_1773284966666.jpg" alt="Contigo de pequeño">
+                </div>
+            </div>
+
+            <div class="decorative-line"></div>
+
+            <div class="text-content">
+                <p>
+                    Han pasado 8 años desde que te fuiste.<br>
+                    Yo tenía apenas 10 años.
+                </p>
+                <p>
+                    No entendía completamente por qué te ibas,<br>
+                    solo sabía que <em>algo grande estaba cambiando</em> en nuestras vidas.
+                </p>
+            </div>
+
+            <div class="decorative-line"></div>
+
+            <div class="btn-container">
+                <button class="btn" onclick="goToPage(3)">Continuar leyendo ❤</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 3 - Fotos recientes -->
+    <div class="section" id="page3">
+        <div class="container">
+            <h2 class="page-title">Ahora, con 18 años, lo entiendo todo</h2>
+
+            <div class="photos-grid">
+                <div class="photo-card">
+                    <img src="images/Screenshot_20260311_220435_Instagram.jpg" alt="Juntos ahora">
+                </div>
+                <div class="photo-card">
+                    <img src="images/Screenshot_20260311_220723_Instagram.jpg" alt="Nuestros momentos">
+                </div>
+            </div>
+
+            <div class="message-box">
+                <p>
+                    Entiendo el <em>sacrificio que hiciste</em>.<br>
+                    Dejaste tu hogar, tu país, a tu hijo.
+                </p>
+                <p>
+                    No porque quisieras,<br>
+                    sino porque <em>nos amabas tanto</em> que estabas dispuesta<br>
+                    a cargar con la distancia más dolorosa del mundo.
+                </p>
+                <p>
+                    El año pasado fue especialmente duro.<br>
+                    Un año entero sin verte mientras hacías los papeles de ciudadanía.
+                </p>
+                <p>
+                    Y luego, <em>el 14 de enero de este año</em>,<br>
+                    alrededor de las 10 de la mañana,<br>
+                    te vi partir de nuevo.
+                </p>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn" onclick="goToPage(4)">Hay algo más que decirte ❤</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 4 - Carta completa -->
+    <div class="section" id="page4">
+        <div class="container">
+            <div class="header-photo">
+                <img src="images/20260113_195948.jpg" alt="Mamá e hijo">
+            </div>
+
+            <div class="letter-header">
+                <p class="date">12 de marzo de 2026</p>
+                <h1 class="letter-title">Querida Mamá</h1>
+            </div>
+
+            <div class="letter-body">
+                <p>Hoy cumples 37 años, y mientras escribo esto, pienso en todas las veces que he querido decirte algo pero las palabras se me quedan atoradas en la garganta cuando hablamos por teléfono, o cuando finalmente nos vemos después de tantos meses.</p>
+
+                <p>Estos años han sido difíciles, mamá. Ver a otros crecer con sus madres cerca, mientras yo contaba los meses para el próximo reencuentro. Cada vez que nos vemos, son solo días, y luego otra vez la despedida. Cada vez duele igual.</p>
+
+                <p>Ese año sin verte fue especialmente duro. Hubo momentos en los que me sentí solo, momentos donde necesitaba un abrazo tuyo y solo tenía tu voz al otro lado del teléfono. Pero nunca te lo dije porque sé que tú también estabas sufriendo la misma ausencia.</p>
+
+                <p>Pero mamá, quiero que sepas algo: <em>nunca, ni un solo día, he dudado de tu amor</em>. Cada sacrificio que hiciste, cada día que pasaste lejos, cada cumpleaños tuyo que celebraste sola en otro país, todo eso lo hiciste por mí. Y eso es algo que llevaré conmigo toda mi vida.</p>
+
+                <p>Hace unos meses, en diciembre, saqué la visa. Cuando me dieron ese papel en mis manos, lo primero que pensé fue en ti. En que finalmente, después de tantos años de que tú vinieras aquí, yo podría ir allá. Voy a conocer tu casa, las calles por donde caminas, el lugar donde has construido una vida para darnos un futuro mejor.</p>
+
+                <p>Este año, a mitad de año, voy a estar contigo por dos semanas. Y sé que no es mucho tiempo, sé que después tendré que volver, pero mamá... voy a abrazarte tan fuerte que vas a sentir todo el amor de estos 8 años de distancia.</p>
+            </div>
+
+            <div class="highlight-box">
+                <p class="highlight-text">
+                    Te amo, mamá.<br>
+                    Te amo con una intensidad que a veces me asusta.<br>
+                    Te extraño cada día.<br>
+                    Y todo lo que soy, es gracias a ti.
+                </p>
+            </div>
+
+            <div class="letter-body">
+                <p>Hoy, en tu cumpleaños número 37, no puedo darte un abrazo. No puedo cantar Las Mañanitas contigo. No puedo verte soplar las velas.</p>
+
+                <p>Pero quiero que sepas que tu hijo está orgulloso de ti, que te ama más de lo que las palabras pueden expresar, y que cuenta los días para volver a verte.</p>
+
+                <p><em>Feliz cumpleaños, mamá. Nos vemos pronto. Y cuando nos veamos, no voy a soltarte.</em></p>
+            </div>
+
+            <div class="decorative-heart">❤</div>
+
+            <div class="signature">
+                <p>Con todo mi amor,</p>
+                <p class="name">Juan Diego</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Música de fondo -->
+    <audio id="bgMusic" loop>
+        <source src="music/photograph.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        let currentPage = 1;
+        const music = document.getElementById('bgMusic');
+
+        function goToPage(pageNumber) {
+            // Ocultar página actual
+            document.getElementById(`page${currentPage}`).classList.remove('active');
+            
+            // Mostrar nueva página
+            document.getElementById(`page${pageNumber}`).classList.add('active');
+            
+            // Actualizar página actual
+            currentPage = pageNumber;
+            
+            // Iniciar música en la primera transición
+            if (pageNumber === 2 && music.paused) {
+                music.volume = 0.4;
+                music.play().catch(err => console.log('Audio:', err));
+            }
+            
+            // Crear confeti en la última página
+            if (pageNumber === 4) {
+                setTimeout(createConfetti, 1000);
+            }
+            
+            // Scroll arriba
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function createConfetti() {
+            const colors = ['#c41e3a', '#e63946', '#ffc2d1', '#ffe5ec'];
+            for (let i = 0; i < 80; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDelay = Math.random() * 4 + 's';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                document.body.appendChild(confetti);
+            }
+        }
+    </script>
+</body>
+</html>
