@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahora entiendo todo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red-deep: #c41e3a;
+            --red-medium: #e63946;
+            --rose-light: #ffc2d1;
+            --rose-soft: #ffe5ec;
+            --cream: #fff8f5;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--rose-soft) 0%, var(--cream) 50%, var(--rose-light) 100%);
+            padding: 3rem 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 30px 80px rgba(196, 30, 58, 0.15);
+            animation: fadeIn 1s ease-out;
+            border: 2px solid rgba(255, 194, 209, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            font-style: italic;
+            text-align: center;
+            background: linear-gradient(135deg, var(--red-deep), var(--red-medium));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 3rem;
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .photos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .photo-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            border: 5px solid white;
+            animation: popIn 0.8s ease-out both;
+        }
+
+        .photo-card:nth-child(1) {
+            animation-delay: 1s;
+        }
+
+        .photo-card:nth-child(2) {
+            animation-delay: 1.3s;
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8) rotate(3deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .photo-card:hover {
+            transform: scale(1.03);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .message-box {
+            background: linear-gradient(135deg, rgba(255, 194, 209, 0.3), rgba(255, 229, 236, 0.3));
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 2px solid rgba(255, 194, 209, 0.5);
+            animation: fadeIn 1s ease-out 1.8s both;
+        }
+
+        .message-box p {
+            font-family: 'Lora', serif;
+            font-size: 1.35rem;
+            line-height: 2;
+            color: #444;
+            text-align: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .message-box em {
+            color: var(--red-medium);
+            font-weight: 600;
+        }
+
+        .btn-container {
+            text-align: center;
+            animation: fadeIn 1s ease-out 2.2s both;
+        }
+
+        .btn {
+            font-family: 'Raleway', sans-serif;
+            padding: 1.2rem 3.5rem;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, var(--red-deep), var(--red-medium));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 40px rgba(196, 30, 58, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(196, 30, 58, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .photos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Ahora, con 18 años, lo entiendo todo</h2>
+
+        <div class="photos-grid">
+            <div class="photo-card">
+                <img src="images/Screenshot_20260311_220435_Instagram.jpg" alt="Juntos ahora">
+            </div>
+            <div class="photo-card">
+                <img src="images/Screenshot_20260311_220723_Instagram.jpg" alt="Nuestros momentos">
+            </div>
+        </div>
+
+        <div class="message-box">
+            <p>
+                Entiendo el <em>sacrificio que hiciste</em>.<br>
+                Dejaste tu hogar, tu país, a tu hijo.
+            </p>
+            <p>
+                No porque quisieras,<br>
+                sino porque <em>nos amabas tanto</em> que estabas dispuesta<br>
+                a cargar con la distancia más dolorosa del mundo.
+            </p>
+            <p>
+                El año pasado fue especialmente duro.<br>
+                Un año entero sin verte mientras hacías los papeles de ciudadanía.
+            </p>
+            <p>
+                Y luego, <em>el 14 de enero de este año</em>,<br>
+                alrededor de las 10 de la mañana,<br>
+                te vi partir de nuevo.
+            </p>
+        </div>
+
+        <div class="btn-container">
+            <a href="page4.html" class="btn">Hay algo más que decirte ❤</a>
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop autoplay>
+        <source src="music/photograph.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        music.volume = 0.4;
+        music.play().catch(err => console.log('Audio:', err));
+    </script>
+</body>
+</html>
